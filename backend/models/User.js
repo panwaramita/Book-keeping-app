@@ -8,7 +8,8 @@ const mongoose=require('mongoose');
      },
      email:{
          type:String,
-         required:true
+         required:true,
+         unique:true
      },
      password:{
          type:String,
