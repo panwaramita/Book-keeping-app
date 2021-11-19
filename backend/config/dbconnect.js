@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const dbUrl="mongodb+srv://amita:amitaamita@cluster0.rsud2.mongodb.net/book-keeping-app";
+const dbUrl=process.env.mongodb_url;
 
 const dbconnect=()=>{
     mongoose.connect(dbUrl,{

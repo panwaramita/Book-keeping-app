@@ -1,17 +1,22 @@
 const express=require('express');
 const app=express();
-const dbconnect=require("./config/dbconnect.js");
 const error=require("./middleware/errorMiddleHandle.js");
 const userRoute=require('./route/User.js');
-//connect DB
-dbconnect();
+const dotenv=require('dotenv');
 
 //passing bodydata
+dotenv.config();
 
+const dbconnect=require("./config/dbconnect.js");
+
+//connect DB
+dbconnect();
 app.use(express.json());
 //Routes
 
 app.use('/api/users',userRoute);
+
+
 //error middleware
 app.use(error.errorMiddlewareHandler);
 //server
