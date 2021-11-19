@@ -17,7 +17,24 @@ res.send("User created");
 )
   //login
   usersRoute.post('/login',asyncerrorHanlder(async(req,res)=>{
-      res.send('Login Route')
+    const {email,password}=req.body;
+    const userExist=await User.findOne({email:email});
+if(userExist)
+{
+ //set status code
+ res.status(200);
+ res.json({
+   _id:userExist.id,
+   name:userExist.name,
+   password:userExist.password,
+   email:userExist.email
+
+ })
+}
+else{
+res.status(401);
+throw new Error("Invalid credentials");
+}
       
   }))
   //update user
