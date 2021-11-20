@@ -2,6 +2,7 @@ const express=require('express');
 const app=express();
 const error=require("./middleware/errorMiddleHandle.js");
 const userRoute=require('./route/User.js');
+const bookRoute=require('./route/bookRoute.js');
 const dotenv=require('dotenv');
 
 //passing bodydata
@@ -15,7 +16,7 @@ app.use(express.json());
 //Routes
 
 app.use('/api/users',userRoute);
-
+app.use('/api/books',bookRoute);
 
 //error middleware
 app.use(error.errorMiddlewareHandler);
